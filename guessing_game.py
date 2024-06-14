@@ -1,6 +1,4 @@
-# guessing game v1.0
-# guessing game v2.0
-# guessing game v3.0
+# guessing game v4.0
 
 import random
 
@@ -31,9 +29,19 @@ def play():
 
         except ValueError:
             print('Wrong Input!')
+    return count_attempts
+
+def save_score(count_attempts):
+    file = "Scores.txt"
+    nickname = input("\nEnter nickname: ")
+    with open(file, 'a') as w:
+        w.write(f"\n{nickname}: {count_attempts} Attempts")
+    pass
 
 while True:
-    play()
+    highscore = play()
+
+    save_score(highscore)
 
     correctUserInput = False
 
